@@ -16,4 +16,7 @@ Ejecución inicial: `mvn test` ejecutó 22 pruebas, con 6 fallos y 1 error. Las 
 
 ## Evidencia de depuración
 
-Pendiente de capturas de dos sesiones de depuración reales. No se ha añadido ninguna imagen de sustitución.
+- D-01/R2: la sesión se detuvo en `CatalogoService.registrar`, línea 20. En Variables se observó `nombre = "   "`; por ello `nombre.isEmpty()` era `false` y la validación original no rechazaba el valor.
+- D-02/R3: la sesión se detuvo en `CatalogoService.registrar`, línea 23. En Variables se observó `cupo = 40`; la condición original `cupo >= 40` era verdadera, aunque la regla acepta el límite superior.
+
+Las dos capturas fueron tomadas durante la depuración en VS Code. Guárdalas como archivos de evidencia junto al repositorio antes de la entrega final.
