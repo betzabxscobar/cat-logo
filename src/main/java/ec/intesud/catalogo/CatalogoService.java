@@ -26,11 +26,12 @@ public class CatalogoService {
         if (precio == null || precio.signum() <= 0) {
             throw new IllegalArgumentException("Precio inválido: " + precio);
         }
-        if (cursos.containsKey(codigo.toLowerCase())) {
+        String clave = codigo.toLowerCase(Locale.ROOT);
+        if (cursos.containsKey(clave)) {
             throw new IllegalStateException("Ya existe el curso " + codigo);
         }
         Curso curso = new Curso(codigo, nombre.trim(), cupo, precio);
-        cursos.put(codigo, curso);
+        cursos.put(clave, curso);
         return curso;
     }
 
@@ -61,7 +62,7 @@ public class CatalogoService {
     }
 
     public Curso obtener(String codigo) {
-        Curso curso = cursos.get(codigo);
+        Curso curso = cursos.get(codigo.toLowerCase(Locale.ROOT));
         if (curso == null) {
             throw new NoSuchElementException("No existe el curso " + codigo);
         }
