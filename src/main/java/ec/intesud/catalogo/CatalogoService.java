@@ -36,8 +36,9 @@ public class CatalogoService {
     }
 
     public List<Curso> buscar(String texto) {
+        String consulta = texto.toLowerCase(Locale.ROOT);
         return cursos.values().stream()
-                .filter(c -> c.getNombre().contains(texto))
+                .filter(c -> c.getNombre().toLowerCase(Locale.ROOT).contains(consulta))
                 .toList();
     }
 
